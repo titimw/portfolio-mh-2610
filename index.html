@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>한민우 업무 포트폴리오</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Single light theme (document). Navy only. Layout: 한 줄 흐름의 브리핑 — 첫 화면은 한 달의 업무 리듬(전월→매주→월초→마감 후) 타임라인, 그 아래 손익 원장을 담당 구간별로 묶어 보여줌 */
+:root{
+  --bg:#E8EDF2; --paper:#FFFFFF; --panel:#F3F6F9; --ink:#1C2533; --ink-2:#465264; --ink-3:#6B788A;
+  --teal:#1F3A5F; --teal-soft:#DCE6F1; --ochre:#4F6A88; --line:#D3DCE6; --hero:#1F3A5F;
+  --serif:'Noto Serif KR','Noto Serif CJK KR','Nanum Myeongjo',Georgia,serif; --sans:'Noto Sans KR','Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{word-break:keep-all;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.75;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:48px}
+.page{max-width:960px;margin:0 auto}
+.who{font-size:14px;color:var(--ink-2);display:flex;flex-wrap:wrap;gap:4px 20px}
+.who b{color:var(--ink)}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(28px,4.2vw,40px);line-height:1.35;margin:20px 0 16px;text-wrap:balance;word-break:keep-all}
+.lead{max-width:60ch;color:var(--ink-2);margin:0}
+.rhythm{margin:40px 0 0;background:var(--paper);border:1px solid var(--line);padding:28px clamp(16px,3vw,32px) 24px}
+.rhythm h2{font-family:var(--serif);font-size:18px;margin:0 0 4px}
+.rhythm .cap{font-size:14px;color:var(--ink-3);margin:0 0 24px}
+.track{display:grid;grid-template-columns:1.1fr 2.4fr 1fr 1.2fr;position:relative}
+.track::before{content:"";position:absolute;left:0;right:0;top:15px;border-top:2px solid var(--teal)}
+.step{position:relative;padding-right:16px;min-width:0}
+.dot{width:32px;height:32px;border-radius:50%;background:var(--paper);border:2px solid var(--teal);display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--teal);position:relative}
+.mondays{display:flex;gap:10px}
+.mondays .dot{width:24px;height:24px;margin-top:4px;font-size:11px;border-width:1.5px}
+.when{display:block;margin-top:14px;font-size:13px;color:var(--ochre);font-weight:700}
+.step strong{display:block;font-size:17px;margin:2px 0 6px}
+.step p{margin:0;font-size:14px;color:var(--ink-2);line-height:1.6}
+.loop{margin:20px 0 0;font-size:14px;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:14px}
+.order{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin:40px 0 0}
+.order div{min-width:0}
+.order i{font-style:normal;font-size:13px;color:var(--ink-3)}
+.order b{display:block;font-family:var(--serif);font-size:17px;margin:2px 0 4px}
+.order span{font-size:14px;color:var(--ink-2);line-height:1.6;display:block}
+section{margin-top:72px}
+section > h2{font-family:var(--serif);font-size:26px;margin:0 0 8px;text-wrap:balance}
+.sub{color:var(--ink-2);max-width:62ch;margin:0 0 28px}
+.ledger{display:grid;grid-template-columns:150px minmax(0,1fr);border-top:2px solid var(--ink)}
+.owner{padding:16px 16px 16px 0;border-bottom:1px solid var(--line);font-size:14px;font-weight:700}
+.owner small{display:block;font-weight:400;color:var(--ink-3);font-size:13px}
+.owner.me{color:var(--teal)}
+.rows{border-bottom:1px solid var(--line);min-width:0}
+.rows.me{background:var(--teal-soft)}
+.r{display:grid;grid-template-columns:28px minmax(110px,170px) minmax(0,1fr);gap:12px;padding:10px 16px;font-size:15px}
+.r + .r{border-top:1px solid var(--line)}
+.r .op{color:var(--ink-3);text-align:center}
+.r.total{font-weight:700}
+.r .d{color:var(--ink-2);font-size:14px}
+.r.total .d{font-weight:400}
+.foot{font-size:13px;color:var(--ink-3);margin:12px 0 0}
+.basis{font-size:13px;color:var(--ink-3);margin:-16px 0 12px}
+.owner.out{color:var(--ink-3);font-weight:500;border-bottom:none}
+.rows.out{border-bottom:none;border-top:1px dashed var(--ink-3);color:var(--ink-3)}
+.owner.out{border-top:1px dashed var(--ink-3)}
+.rows.out .d{color:var(--ink-3)}
+.flowmap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.box{background:var(--paper);border:1px solid var(--line);padding:22px 24px;min-width:0}
+.box h3{font-family:var(--serif);font-size:17px;margin:0 0 12px}
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:14px;margin-bottom:14px}
+.chain span{border:1px solid var(--teal);color:var(--teal);padding:2px 10px;border-radius:999px;font-weight:500}
+.chain span.me{background:var(--teal);color:var(--paper)}
+.chain em{font-style:normal;color:var(--ink-3)}
+.box ul{margin:0;padding-left:18px;font-size:14px;color:var(--ink-2);display:grid;gap:6px}
+.stance{margin:28px 0 0;font-family:var(--serif);font-size:19px;line-height:1.7;max-width:46ch;border-left:3px solid var(--ochre);padding-left:20px}
+.rel{display:grid;grid-template-columns:minmax(0,1fr) 104px minmax(0,1fr) 104px minmax(0,1fr);
+  grid-template-areas:". . boss . ." ". . a1 . ." "acc a2 me a3 sales" ". . a4 . ." ". . log a5 ops";gap:8px 0;align-items:center}
+.nd{background:var(--paper);border:1px solid var(--line);padding:16px 18px;min-width:0}
+.nd b{display:block;font-size:16px;margin-bottom:4px}
+.nd span{display:block;font-size:13.5px;color:var(--ink-2);line-height:1.6}
+.nd.key{border-color:var(--teal);border-width:1.5px}
+.nd.me{background:var(--teal);border-color:var(--teal);text-align:center;align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+.nd.me b{color:#FFFFFF;font-family:var(--sans);font-size:19px;font-weight:700;margin:0}
+.nd.me span{color:#C9D6E5}
+.nd.mute{background:transparent;border-style:dashed}
+.nd.mute b{color:var(--ink-2);font-size:15px}
+.ar{display:flex;align-items:center;justify-content:center;gap:6px;color:var(--teal);text-align:center}
+.ar i{font-style:normal;font-size:20px;line-height:1}
+.ar em{font-style:normal;font-size:13px;font-weight:700}
+.ar.h{flex-direction:column;gap:0}
+.ar.v{padding:4px 0}
+.ar.mute{color:var(--ink-3)}
+.ar.mute em{font-weight:500}
+.hero{background:var(--hero);color:#F1F5F9;padding:36px clamp(20px,4vw,48px) 40px;border-radius:8px}
+.hero .who{color:#B9C8DA}.hero .who b{color:#FFFFFF}
+.hero h1{color:#FFFFFF;margin-top:16px}
+.hero .lead{color:#C9D6E5}
+.rhythm{border-radius:8px;border:none;box-shadow:0 1px 2px rgba(28,37,51,.08);margin-top:-16px;margin-inline:clamp(0px,2vw,24px);position:relative}
+section{background:var(--paper);border-radius:8px;padding:40px clamp(18px,4vw,48px);margin-top:32px;box-shadow:0 1px 2px rgba(28,37,51,.06)}
+.order{margin-top:32px;gap:16px}
+.card{display:block;background:var(--paper);border-radius:8px;padding:18px 20px;color:inherit;text-decoration:none;border:1px solid transparent;min-width:0}
+a.card{border-color:var(--teal);box-shadow:0 1px 2px rgba(28,37,51,.08)}
+a.card:hover,a.card:focus-visible{background:var(--teal-soft);outline:none}
+.card i{display:inline-block;font-style:normal;font-size:12px;font-weight:700;color:var(--teal);background:var(--teal-soft);padding:1px 8px;border-radius:999px}
+.card.soon{background:var(--panel)}
+.card u{display:inline-block;margin-top:10px;text-decoration:none;font-size:13px;font-weight:700;color:var(--teal)}
+.more{display:inline-block;margin-top:10px;font-size:13px;font-weight:700;color:var(--teal);background:var(--teal-soft);padding:3px 10px;border-radius:999px}
+.ledger .owner{background:var(--panel);padding-left:14px}
+.ledger .owner.me{background:var(--teal);color:#FFFFFF}
+.ledger .owner.me small{color:#C9D6E5}
+.ledger .owner.out{background:transparent}
+.r.total{background:var(--panel)}
+.rows.me .r.total{background:#C9D8EA}
+details{background:var(--panel);border:1px solid var(--line);border-radius:6px;margin-top:10px}
+.steps{border-top:none}
+details[open]{background:var(--paper);border-color:var(--teal)}
+summary{padding:16px 18px}
+summary:hover{background:var(--teal-soft)}
+details[open] summary{border-bottom:1px solid var(--line)}
+summary::after{content:"+";width:26px;height:26px;border-radius:50%;background:var(--teal);color:#FFFFFF;font-size:18px;display:grid;place-items:center;align-self:center}
+.sr{background:#FFFFFF;border:1px solid var(--line);padding:2px 10px;border-radius:999px;font-weight:700}
+details[open] .sr{background:var(--teal-soft);border-color:transparent}
+.body{padding:20px 18px 24px 146px}
+.hint::after{content:" 단계 오른쪽의 + 버튼을 누르면 펼쳐집니다.";color:var(--teal);font-weight:500}
+.comp h2{font-family:var(--sans);font-size:17px;margin:0 0 16px}
+.comps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.cp{display:flex;flex-direction:column;gap:8px;background:var(--panel);border-radius:6px;padding:18px 20px;color:inherit;text-decoration:none;min-width:0;border:1px solid transparent}
+a.cp:hover,a.cp:focus-visible{border-color:var(--teal);background:var(--teal-soft);outline:none}
+.cp b{font-size:17px;color:var(--teal)}
+.cp span{font-size:14px;color:var(--ink-2);line-height:1.65;flex:1}
+.cp em{font-style:normal;align-self:flex-start;background:var(--teal);color:#FFFFFF;font-size:14px;font-weight:700;padding:4px 12px;border-radius:999px}
+.tr{margin:10px 0 0;font-size:12px;color:var(--ink-3);text-align:right}
+.rhythm.in{margin:8px 0 28px;box-shadow:none;border:1px solid var(--line);background:var(--panel)}
+.rhythm.in h3{font-size:17px;margin:0 0 4px}
+.rhythm.in .dot{background:var(--panel)}
+.kpimap{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:20px 24px;display:grid;gap:12px;margin-bottom:28px}
+.km-row{display:grid;grid-template-columns:90px minmax(0,1fr);gap:12px;align-items:center}
+.km-k{font-size:13px;font-weight:700;color:var(--ink-3)}
+.km-row p{margin:0;font-size:14px;color:var(--ink-2)}
+.km-chain{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.km-chain span{background:var(--paper);border:1px solid var(--teal);color:var(--teal);font-size:14px;font-weight:700;padding:3px 12px;border-radius:4px}
+.km-chain i{font-style:normal;color:var(--ink-3)}
+.km-tags{display:flex;flex-wrap:wrap;gap:6px}
+.km-tags span{background:var(--teal);color:#FFFFFF;font-size:14px;font-weight:700;padding:3px 12px;border-radius:999px}
+.km-tags small{font-weight:400;opacity:.8;font-size:12px}
+.km-note{margin:4px 0 0;font-size:13px;color:var(--ink-3);border-top:1px dashed var(--line);padding-top:10px}
+.body.flat{padding:0}
+.report{margin-top:32px;border:1.5px solid var(--teal);border-radius:8px;overflow:hidden}
+.rp-head{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--teal);color:#FFFFFF;padding:12px 20px;flex-wrap:wrap}
+.rp-head b{font-size:15px}
+.rp-tag{font-size:12px;font-weight:700;background:#FFFFFF;color:var(--teal);padding:2px 10px;border-radius:999px}
+.rp-grid{display:grid;grid-template-columns:150px minmax(0,1.4fr) minmax(0,1fr);gap:28px;padding:22px 24px;align-items:start}
+.rp-score{display:flex;flex-direction:column;gap:2px}
+.rp-score span{font-size:13px;color:var(--ink-3)}
+.rp-score strong{font-size:40px;line-height:1.1;color:var(--teal);font-variant-numeric:tabular-nums}
+.rp-score em{font-style:normal;font-size:13px;color:var(--ink-2)}
+.rp-bars{display:grid;gap:8px;min-width:0}
+.bar{display:grid;grid-template-columns:100px minmax(0,1fr) 48px;gap:10px;align-items:center;font-size:13px}
+.bar span{color:var(--ink-2)}
+.bar div{position:relative;height:10px;background:var(--panel);border-radius:2px}
+.bar div::after{content:"";position:absolute;left:66.6%;top:-3px;bottom:-3px;border-left:1.5px solid var(--ink-3)}
+.bar i{display:block;height:100%;background:var(--teal);border-radius:2px}
+.bar b{text-align:right;font-variant-numeric:tabular-nums}
+.bar.low i{background:#9AA9BC}.bar.low b{color:#9A4A1F}
+.bar-ax{margin:2px 0 0;font-size:12px;color:var(--ink-3)}
+.rp-notes{display:grid;gap:10px;font-size:14px;min-width:0}
+.rp-notes p{margin:0;line-height:1.55}
+.lb{display:inline-block;font-size:12px;font-weight:700;padding:1px 8px;border-radius:3px;margin-right:8px}
+.lb.good{background:var(--teal-soft);color:var(--teal)}
+.lb.warn{background:#F6E7DD;color:#9A4A1F}
+.why .p2{margin-top:12px}
+.case-top{display:grid;grid-template-columns:170px minmax(0,1fr);gap:28px;padding:22px 24px;align-items:center;border-bottom:1px solid var(--line)}
+.ct-num span{display:block;font-size:13px;color:var(--ink-3)}
+.ct-num strong{font-size:40px;color:var(--teal);line-height:1.1;font-variant-numeric:tabular-nums}
+.ct-bars{display:grid;gap:6px;min-width:0}
+.ct-l{margin:6px 0 0;font-size:13px;color:var(--ink-3)}
+.ct-l:first-child{margin-top:0}
+.stack{display:flex;height:30px;border-radius:3px;overflow:hidden;font-size:13px;font-weight:700}
+.stack i{font-style:normal;display:flex;align-items:center;padding:0 10px;background:var(--teal);color:#FFFFFF;white-space:nowrap;overflow:hidden;min-width:0}
+.stack i.s2,.stack i.s3{background:#C9D6E5;color:var(--teal)}
+.ct-n{margin:4px 0 0;font-size:14px;font-weight:700;color:var(--teal)}
+.types{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+.ty{padding:18px 22px;border-left:1px solid var(--line);min-width:0}
+.ty-note{margin:0;padding:14px 22px 0;font-size:13px;color:var(--ink-3)}
+.ctb{display:inline-block;margin-left:6px;font-size:12px;font-weight:700;color:var(--ink-3);border:1px dashed var(--ink-3);padding:0 8px;border-radius:3px}
+.ctb.hi{color:var(--teal);border:1px solid var(--teal)}
+.ty:first-child{border-left:none}
+.ty b{display:block;margin:8px 0 4px;font-size:15px}
+.ty p{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.65}
+.ba{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.ba-it{padding:20px 24px;border-left:1px solid var(--line);min-width:0}
+.ba-it:first-child{border-left:none}
+.ba-it span{font-size:13px;color:var(--ink-3)}
+.ba-it p{margin:4px 0 0;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.ba-it s{color:var(--ink-3);font-size:18px;text-decoration-thickness:1px}
+.ba-it i{font-style:normal;color:var(--ink-3)}
+.ba-it strong{font-size:30px;color:var(--teal);font-variant-numeric:tabular-nums;line-height:1.2}
+.be{padding:18px 24px;border-bottom:1px solid var(--line);display:grid;gap:8px}
+.be-bar{display:grid;grid-template-columns:90px minmax(0,1fr) 44px;gap:10px;align-items:center;font-size:13px}
+.be-bar div{height:16px;background:var(--panel);border-radius:2px}
+.be-bar i{display:block;height:100%;background:#9AA9BC;border-radius:2px}
+.be-bar.hi i{background:var(--teal)}
+.be-bar b{text-align:right;font-variant-numeric:tabular-nums}
+.be-bar.hi b{color:var(--teal)}
+.be-n{margin:2px 0 0;font-size:13px;color:var(--ink-2)}
+.jump{cursor:pointer;border-radius:4px}
+.jump:hover strong,.jump:focus-visible strong{color:var(--teal);text-decoration:underline;text-underline-offset:4px}
+.jump:focus-visible{outline:2px solid var(--teal);outline-offset:6px}
+.kicker{font-size:14px;color:var(--ochre);font-weight:700;margin:0 0 6px}
+.steps{border-top:2px solid var(--ink)}
+details{border-bottom:1px solid var(--line);scroll-margin-top:24px}
+summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:110px minmax(0,1fr) auto 26px;gap:16px;align-items:baseline;padding:18px 4px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:20px;color:var(--teal);line-height:1;justify-self:end}
+details[open] summary::after{content:"−"}
+summary:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.sw{font-size:13px;color:var(--ochre);font-weight:700}
+.st{font-family:var(--serif);font-size:19px;font-weight:700}
+.sr{font-size:14px;color:var(--teal);font-weight:500;text-align:right}
+.body{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;padding:4px 4px 28px 130px}
+.body h4{font-size:13px;color:var(--ink-3);font-weight:700;margin:0 0 6px}
+.body h4:not(:first-child){margin-top:20px}
+.why p{margin:0;font-size:15px;line-height:1.85;max-width:58ch}
+.what ul{margin:0;padding-left:18px;font-size:14px;color:var(--ink-2);display:grid;gap:6px;line-height:1.65}
+.what ul ul{margin-top:6px}
+.what .res li{color:var(--ink)}
+.what b{color:var(--teal)}
+.what.wide{grid-column:1 / -1}
+.note{margin:20px 0 0;font-size:15px;color:var(--ink-2)}
+.note b{color:var(--teal)}
+details > summary::after{color:#FFFFFF;font-weight:700;font-size:18px;line-height:26px;text-align:center;display:block}
+@media (max-width:760px){
+  summary{grid-template-columns:minmax(0,1fr) 26px;gap:2px 12px}.sr{justify-self:start}.rhythm{margin-inline:0}
+  .sw{grid-column:1}.st{grid-column:1}.sr{grid-column:1;text-align:left}
+  summary::after{grid-column:2;grid-row:1 / span 3;align-self:center}
+  .body{grid-template-columns:1fr;gap:4px;padding:16px 16px 24px}
+  .track{grid-template-columns:1fr;gap:20px}.track::before{left:15px;right:auto;top:0;bottom:0;border-top:none;border-left:2px solid var(--teal)}
+  .step{padding-left:48px}.step .dot,.step .mondays{position:absolute;left:0;top:0}.step .mondays{flex-direction:column;gap:4px;left:4px}.when{margin-top:0}
+  .order{grid-template-columns:1fr 1fr}.ba{grid-template-columns:1fr}.ba-it{border-left:none;border-top:1px solid var(--line)}.ba-it:first-child{border-top:none}.case-top{grid-template-columns:1fr}.types{grid-template-columns:1fr}.ty{border-left:none;border-top:1px solid var(--line)}.ty:first-child{border-top:none}.rp-grid{grid-template-columns:1fr}.km-row{grid-template-columns:1fr;gap:4px}.comps{grid-template-columns:1fr}.rel{grid-template-columns:1fr;grid-template-areas:"boss" "a1" "me" "a2" "acc" "a3" "sales" "a4" "log" "a5" "ops"}.ar.h{flex-direction:row;gap:6px}.ar.h i{transform:rotate(90deg)}.ledger{grid-template-columns:1fr}.owner{padding:14px 0 6px;border-bottom:none}
+}
+@media (max-width:420px){.order{grid-template-columns:1fr}.r{grid-template-columns:20px minmax(0,1fr)}.r .d{grid-column:2}}
+</style>
+<style>
+body{margin:0}
+@media print{
+  body{background:#FFFFFF;padding:0}
+  .hero{border-radius:0}
+  .rhythm,section{box-shadow:none}
+  section{border:1px solid var(--line);padding:28px 36px;margin-top:20px}
+  .project{break-before:page;margin-top:0}
+  .more,.card u,.hint::after,summary::after{display:none}
+  details{break-inside:auto}
+  .kpimap,.report,.rel,.comps,.ba,.types,.be,.case-top,.ledger .rows,.order,.body > div{break-inside:avoid}
+  h2,h3,h4,summary{break-after:avoid}
+  a{text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+
+<div class="page">
+  <header class="hero">
+  <div class="who"><span><b>한민우</b> · 지마켓 브랜드사업기획 과장, 경력 약 10년</span><span>컬리 커머스 상품 전략 담당자 지원</span><span>titihmw@gmail.com</span></div>
+  <h1>영업이 전략을 세울 수 있도록<br>필요한 근거를 고민하고 설계합니다.</h1>
+  <p class="lead">지마켓 직매입(1P) 사업에서 제가 맡아 온 업무와 프로젝트 네 건을 설명드리는 자료입니다.</p>
+  </header>
+
+  <div class="rhythm comp" aria-label="핵심 역량">
+    <h2>핵심 역량</h2>
+    <div class="comps">
+      <a class="cp" href="#r3"><b>수익 지표 설계</b><span>회계에 없는 브랜드 단위 손익을 직접 설계해 직매입 표준 손익 지표로 정착시켰습니다.</span><em>마감 3일 → 0.5일</em></a>
+      <a class="cp" href="#p1"><b>목표·성과 관리 체계</b><span>월 목표 배분부터 주간 차이 분석, 마감, 조직 KPI까지 이어지는 관리 체계를 설계하고 전담 운영합니다.</span><em>주간 보고 30분 → 5분</em></a>
+      <a class="cp" href="#p3"><b>원인 진단과 개선 검증</b><span>지표 변동의 원인을 브랜드·상품 단위까지 분해하고, 개선안은 파일럿으로 검증해 정책 기준으로 만듭니다.</span><em>물류비 TR 16.5% → 8.2%</em></a>
+    </div>
+    <p class="tr">TR: 매출 대비 비율</p>
+  </div>
+
+  <div class="order">
+    <a class="card" href="#p1"><i>운영</i><b>① 수익관리 루틴</b><span>감에 의존하던 목표 관리를 숫자 기반 운영으로 전환</span><u>보기 ›</u></a>
+    <a class="card" href="#p2"><i>평가</i><b>② 조직 KPI</b><span>월 실적을 담당자·팀 평가로 연결</span><u>보기 ›</u></a>
+    <a class="card" href="#p3"><i>진단</i><b>③ 객단가 원인 분석</b><span>"왜 변했나"를 브랜드·상품까지 분해</span><u>보기 ›</u></a>
+    <a class="card" href="#p4"><i>개선</i><b>④ 장바구니 확대 기획전</b><span>파일럿으로 효과를 검증해 직매입 사업 정책 기준으로 확장</span><u>보기 ›</u></a>
+  </div>
+
+  <section>
+    <h2>손익 구조와 제가 관리하고 있는 영역</h2>
+    <p class="sub">직매입 94개 브랜드 계정과 2개 영업팀(담당자 14명)의 손익을 관리합니다. 거래액에서 영업이익까지 내려가는 순서를 담당 구간별로 묶었습니다.</p>
+    <p class="basis">관리회계 기준으로 작성했습니다.</p>
+    <div class="ledger">
+      <div class="owner">영업팀<small>목표 배분은 제가 작성</small></div>
+      <div class="rows">
+        <div class="r"><span class="op"></span><span>GMV (거래액)</span><span class="d">일·팀 단위 목표로 운영</span></div>
+        <div class="r"><span class="op">−</span><span>할인·쿠폰·부가세</span><span class="d"></span></div>
+        <div class="r total"><span class="op">=</span><span>순매출</span><span class="d">손익 관리의 매출 기준</span></div>
+        <div class="r"><span class="op">−</span><span>매출원가</span><span class="d"></span></div>
+        <div class="r total"><span class="op">=</span><span>상품마진</span><span class="d"></span></div>
+        <div class="r"><span class="op">+</span><span>공급사 지원금</span><span class="d">판매장려금·판촉비·광고비. 쿠폰 할인 비용은 판촉비로 최대 50%까지 보전받는 직매입 고유 구조</span></div>
+      </div>
+      <div class="owner me">한민우<small>직접 산출·전담 관리</small></div>
+      <div class="rows me">
+        <div class="r"><span class="op">−</span><span>재고요소</span><span class="d">재고평가충당금, 폐기·처분손실, 재고 실사 차이, 센터 임의 반품출고 손실. 변동 원인을 물류부서와 확인</span></div>
+        <div class="r total"><span class="op">=</span><span>1차 공헌이익</span><span class="d">사내 명칭: 상품OI. 회계 시스템에 없는 브랜드 단위 손익</span></div>
+      </div>
+      <div class="owner">물류부서<small>스타배송 단위로 확정</small></div>
+      <div class="rows">
+        <div class="r"><span class="op">−</span><span>물류비</span><span class="d">직매입 90% 이상 + 판매자 풀필먼트</span></div>
+        <div class="r total"><span class="op">=</span><span>2차 공헌이익</span><span class="d">사내 명칭: 사업OI. 제가 넘긴 1차 공헌이익과 변동 사유를 바탕으로 확정</span></div>
+      </div>
+      <div class="owner">운영기획팀</div>
+      <div class="rows">
+        <div class="r"><span class="op">−</span><span>결제수수료</span><span class="d"></span></div>
+        <div class="r"><span class="op">−</span><span>고객 적립금</span><span class="d">회계상 매출 차감 항목이나, 관리 장표에서는 하단에 반영</span></div>
+        <div class="r total"><span class="op">=</span><span>최종 공헌이익</span><span class="d">전사 손익 관리 기준</span></div>
+      </div>
+      <div class="owner out">관리 범위 밖</div>
+      <div class="rows out">
+        <div class="r"><span class="op">−</span><span>고정비</span><span class="d">센터 임차료·감가상각, 인건비, 판관비 배부. 여기까지가 변동비, 이 줄부터 고정비</span></div>
+        <div class="r total"><span class="op">=</span><span>영업이익</span><span class="d"></span></div>
+      </div>
+    </div>
+    <p class="foot">공헌이익: 순매출에서 판매량에 따라 함께 움직이는 비용(원가·물류비·결제수수료 등)을 단계별로 뺀 이익. 고정비를 더 빼면 영업이익이 됩니다.</p>
+  </section>
+
+  <section>
+    <h2>보고 및 협업 체계</h2>
+    <p class="sub">회계팀의 결산 자료를 영업 관점으로 재가공하고, 물류부서와 손익을 함께 확정하며, 그 결과를 영업팀이 쓸 수 있는 인사이트로 전달합니다.</p>
+    <div class="rel" role="img" aria-label="협업 관계도: 회계팀에서 받은 자료를 재가공하고, 영업팀에 인사이트를 제공하며, 물류부서와 긴밀하게 협업합니다. 보고는 실장과 본부장에게, 최종 공헌이익은 운영기획팀이 관리합니다.">
+      <div class="nd mute" style="grid-area:boss"><b>실장 · 본부장</b><span>주간·월간 손익 보고</span></div>
+      <div class="ar v mute" style="grid-area:a1"><i>↑</i><em>보고</em></div>
+      <div class="nd key" style="grid-area:acc"><b>회계팀</b><span>결산 자료를 영업이 바로 쓸 수 있는 브랜드 단위 손익으로 재구성</span></div>
+      <div class="ar h" style="grid-area:a2"><em>재가공</em><i>→</i></div>
+      <div class="nd me" style="grid-area:me"><b>한민우</b><span>브랜드사업기획</span></div>
+      <div class="ar h" style="grid-area:a3"><em>인사이트 제공</em><i>→</i></div>
+      <div class="nd key" style="grid-area:sales"><b>영업팀</b><span>주간 차이 분석과 월간 특이점 판독으로 전략의 근거와 방향 제시</span></div>
+      <div class="ar v" style="grid-area:a4"><i>↕</i><em>긴밀 협업</em></div>
+      <div class="nd key" style="grid-area:log"><b>물류부서</b><span>재고 손실 원인을 함께 확인하고, 1차 공헌이익과 변동 사유를 넘겨 2차 공헌이익 산출로 연결</span></div>
+      <div class="ar h mute" style="grid-area:a5"><i>→</i></div>
+      <div class="nd mute" style="grid-area:ops"><b>운영기획팀</b><span>전사 최종 공헌이익 관리</span></div>
+    </div>
+  </section>
+
+  <section id="p1" class="project">
+    <p class="kicker">① 운영</p>
+    <h2>수익관리 루틴의 설계와 운영</h2>
+    <p class="sub hint">아래 한 달 업무 리듬은 제가 단계별로 고안해 정착시키고, 지금까지 운영해 온 체계입니다. 각 단계를 누르면 설계 배경과 결과를 보실 수 있습니다.</p>
+  <div class="rhythm in" aria-label="한 달 업무 리듬">
+      <h3>한 달의 업무 리듬</h3>
+      <p class="cap">데이터 갱신부터 보고 메일까지 전 과정을 전담해 운영합니다.</p>
+      <div class="track">
+        <div class="step"><div class="dot">1</div><span class="when">전월</span><strong>월 목표 일자별 배분</strong><p>한 달 목표를 영업 계획에 맞춰 날짜·팀별로 나눕니다.</p><span class="more">자세히 보기 ›</span></div>
+        <div class="step"><div class="mondays"><div class="dot">월</div><div class="dot">월</div><div class="dot">월</div><div class="dot">월</div></div><span class="when">매주 월요일</span><strong>차이 분석과 전략 수정</strong><p>목표 대비 차이를 분해해 실적 점검 회의의 기준 자료로 씁니다. 영업팀이 원인을 소명하고 대응 전략을 냅니다.</p><span class="more">자세히 보기 ›</span></div>
+        <div class="step"><div class="dot">3</div><span class="when">월초</span><strong>마감</strong><p>브랜드 단위 손익을 결산합니다.</p><span class="more">자세히 보기 ›</span></div>
+        <div class="step"><div class="dot">4</div><span class="when">마감 후</span><strong>월 성과 분석</strong><p>브랜드별 특이점과 재고 손실을 짚고 KPI를 갱신합니다.</p><span class="more">자세히 보기 ›</span></div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <details id="r1" open>
+        <summary><span class="sw">전월</span><span class="st">월 목표 일자별 배분</span><span class="sr">2024년부터 전사 일 목표로 사용</span></summary>
+        <div class="body">
+          <div class="why">
+            <h4>고민의 배경</h4>
+            <p>한 달 목표를 날짜별로 나누는 일이 담당자의 감에 의존해, 배분 근거를 설명하거나 오차 원인을 추적할 수 없었습니다.</p>
+            <h4>접근 방식</h4>
+            <p>이 숫자는 예측이 아니라 한 달 운영의 기준선이라고 봤습니다. 사업의 기본 체력 대비 매출을 크게 움직이는 행사만 반영하면 되고, 같은 브랜드의 같은 유형 행사는 상승 폭이 비슷하다는 점에 착안해 행사 일정을 숫자로 바꿨습니다.</p>
+          </div>
+          <div class="what">
+            <h4>실행</h4>
+            <ul>
+              <li>사업의 기본 체력(평시 매출 수준)을 기준선으로 설정</li>
+              <li>기본 체력 대비 매출을 크게 움직이는 행사를 정의하고 전사 행사 / 브랜드 행사로 나눠 관리</li>
+              <li>브랜드 × 행사 유형별 매출 상승 폭을 과거 실적에서 산출해, 프로모션 일정을 일자별 매출 상승분으로 변환</li>
+              <li>리더가 특정 날짜를 조정하면 나머지 날이 비율대로 움직이고 팀별 월 합계는 고정되는 구조</li>
+            </ul>
+            <h4>결과</h4>
+            <ul class="res">
+              <li>2024년부터 매월 운영, 배분값이 <b>전사 일 목표</b>로 사용</li>
+              <li>영업팀의 일별 진척 점검과 남은 기간 전략 수립 기준</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+
+      <details id="r2">
+        <summary><span class="sw">매주 월요일</span><span class="st">차이 분석과 전략 수정</span><span class="sr">미팅당 보고 30분 → 5분</span></summary>
+        <div class="body">
+          <div class="why">
+            <h4>고민의 배경</h4>
+            <p>매입·재고·할인·행사·공급사 지원금이 동시에 움직여 예측 정확도에는 한계가 있었고, 원인 파악은 영업팀 자체 보고에 기대고 있었습니다.</p>
+            <h4>접근 방식</h4>
+            <p>예측의 목적을 정확도에서 원인 규명과 의사결정 속도로 바꿨습니다. "어디서 얼마가 비는지"부터 합의되도록, 제 자료가 회의의 기준이 되게 만드는 데 집중했습니다.</p>
+          </div>
+          <div class="what">
+            <h4>실행</h4>
+            <ul>
+              <li>목표 대비 차이를 상품마진 · 공급사 지원금 · 재고요소 세 갈래로 분해</li>
+              <li>이미 실현된 차이와 가정 변경으로 생긴 차이를 분리하고, 팀·항목별로 차이가 큰 곳을 표시</li>
+              <li>영업팀은 최소한만 입력하면 상세 예측이 나오는 입력 구조</li>
+              <li>메워야 할 차이의 크기와 방향(매출 또는 마진)을 제시하면, 영업팀이 가격·쿠폰·노출 조정으로 대응 전략을 결정</li>
+            </ul>
+            <h4>결과</h4>
+            <ul class="res">
+              <li>미팅당 보고·분석 시간 <b>30분 → 5분</b></li>
+              <li>주 1회 경영 의사결정의 기준 자료로 사용</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+
+      <details id="r3">
+        <summary><span class="sw">월초</span><span class="st">마감</span><span class="sr">마감 소요 3일 → 0.5일</span></summary>
+        <div class="body">
+          <div class="what wide">
+            <h4>실행</h4>
+            <ul>
+              <li>순매출부터 재고요소까지를 브랜드 단위로 통합해 1차 공헌이익 산출</li>
+              <li>브랜드별 · 물성별(상온·저온·생수) · 항목별로 손익 영향 분해</li>
+            </ul>
+            <h4>결과</h4>
+            <ul class="res">
+              <li>마감 소요 시간 <b>3일 → 0.5일</b></li>
+              <li>직매입 표준 손익 양식으로 정착, 물류부서가 2차 공헌이익을 산출하는 출발점</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+
+      <details id="r4">
+        <summary><span class="sw">마감 후</span><span class="st">월 성과 분석</span><span class="sr">재고 손실 전담 관리</span></summary>
+        <div class="body">
+          <div class="what wide">
+            <h4>실행</h4>
+            <ul>
+              <li>브랜드별 특이점 판독, KPI 갱신 → 영업팀이 배경과 다음 달 계획 공유</li>
+              <li>재고 손실 전담 관리: 소비기한 만료·반품 재고 폐기·위탁 처리 비용, 센터 임의 반품출고, 재고평가충당금의 변동 원인을 물류부서와 직접 확인. 택배사 미보상 출고 손실도 관리 항목에 포함</li>
+            </ul>
+            <h4>이어지는 곳</h4>
+            <ul>
+              <li>사람·팀 평가로 이어지는 것이 ② 조직 KPI, "왜 변했나"를 더 깊이 파는 것이 ③ 객단가 원인 분석입니다.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </div>
+    <p class="note">데이터 갱신부터 보고 메일까지 4년째 전담해 운영하고 있습니다. 반복 작업(일자별 배분·실적 마감)은 사내 AI 툴로 자동화해 <b>2시간 → 30분</b>으로 줄였습니다.</p>
+  </section>
+</div>
+  <section id="p2" class="project">
+    <p class="kicker">② 평가</p>
+    <h2>영업 조직 KPI 평가 산출 체계 설계</h2>
+    <p class="sub">영업본부가 FY27부터 도입한 다면 평가 지침을, 매달 실제로 산출하고 공정하게 운영할 수 있는 체계로 만들었습니다. 월별·누적 결과는 담당자와 팀의 인사평가 근거로 쓰입니다.</p>
+
+    <div class="kpimap">
+      <div class="km-row"><span class="km-k">평가 단위</span>
+        <div class="km-chain"><span>1P 전체</span><i>→</i><span>브랜드사업 2개 팀</span><i>→</i><span>담당자 14명</span><i>→</i><span>관리 브랜드</span></div></div>
+      <div class="km-row"><span class="km-k">범위</span><p>직매입 중심, 담당자가 함께 관리하는 오픈마켓 계정의 거래액·주문 합산</p></div>
+      <div class="km-row"><span class="km-k">평가 지표</span>
+        <div class="km-tags"><span>거래액</span><span>1차 공헌이익률</span><span>주문 수</span><span>SPU <small>인기 상품 수</small></span><span>가격경쟁력</span></div></div>
+      <p class="km-note">지표와 가중치는 영업본부 지침입니다. 저는 이를 매달 산출하고 운영하는 체계를 설계했습니다. SPU는 판매 1,000개 이상 상품(SKU) 수로, 인기 상품 발굴·육성을 보는 지표입니다.</p>
+    </div>
+
+    <div class="body flat">
+      <div class="why">
+        <h4>고민의 배경</h4>
+        <p>본부가 평가 지표를 다섯 개로 넓히면서, 인사이동·브랜드 이관 때의 실적 오귀속과 신규 브랜드의 달성률 왜곡이 드러났습니다. 팀별로 흩어진 파일을 맞추는 데만 하루 2시간 이상 걸렸습니다.</p>
+        <h4>접근 방식</h4>
+        <p>평가는 납득할 수 있는 기준이 먼저라고 봤습니다. 원천 수치는 그대로 두고 왜곡이 생기는 지점에만 보정 원칙을 두었고, 점수에서 그치지 않고 보완할 점까지 보이도록 리포트를 설계했습니다.</p>
+      </div>
+      <div class="what">
+        <h4>실행</h4>
+        <ul>
+          <li>월별 담당 이력을 따로 보관해 실적이 그달 담당자에게 귀속되는 구조</li>
+          <li>산식 원칙: 달성률 상한 없음, 실적이 있는 달의 목표만 누적, 목표가 없는 브랜드는 달성률 중립 처리</li>
+          <li>주문 목표는 거래액 목표에 1분기 평균 객단가를 적용해 산출</li>
+          <li>목표·실적 조합별 왜곡 사례를 유형화해 대체 평가 원칙과 지표 개선안을 경영진에 제안</li>
+          <li>원천 데이터 5종 통합, 담당자 매칭·브랜드 정합성 점검 시트와 월별 운영 가이드 작성</li>
+          <li>담당자별 진단 리포트: 종합 점수, 팀 내 순위, 강점, 보완 항목, 단일 브랜드 의존도</li>
+        </ul>
+        <h4>결과</h4>
+        <ul class="res">
+          <li>집계 <b>하루 2시간 이상 → 즉시 산출</b> (최종 평가 분석까지)</li>
+          <li>인사이동 2명·브랜드 이관 10건 이상·신규 브랜드 7건 이상인 해에도 같은 기준으로 평가</li>
+          <li>제안한 대체 평가 원칙과 지표 개선안 <b>채택</b>, 다음 목표 설정 기준에 반영</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="report" aria-label="담당자 진단 리포트 예시">
+      <div class="rp-head"><b>담당자 진단 리포트</b><span class="rp-tag">예시 · 가상 데이터</span></div>
+      <div class="rp-grid">
+        <div class="rp-score"><span>종합 점수</span><strong>104.2</strong><em>팀 내 3위 / 7명</em></div>
+        <div class="rp-bars">
+          <div class="bar"><span>거래액</span><div><i style="width:72%"></i></div><b>108%</b></div>
+          <div class="bar"><span>1차 공헌이익률</span><div><i style="width:64%"></i></div><b>96%</b></div>
+          <div class="bar"><span>주문 수</span><div><i style="width:75%"></i></div><b>112%</b></div>
+          <div class="bar low"><span>SPU</span><div><i style="width:59%"></i></div><b>88%</b></div>
+          <div class="bar"><span>가격경쟁력</span><div><i style="width:67%"></i></div><b>101%</b></div>
+          <p class="bar-ax">달성률 · 100% 기준선 표시</p>
+        </div>
+        <div class="rp-notes">
+          <p><span class="lb good">강점</span>주문 수, 거래액</p>
+          <p><span class="lb warn">보완</span>SPU 달성률 88%로 점수 손실이 가장 큼</p>
+          <p><span class="lb warn">확인</span>상위 1개 브랜드가 거래액의 62% (단일 브랜드 의존)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="p3" class="project">
+    <p class="kicker">③ 진단</p>
+    <h2>객단가 변동 원인 분석 체계 구축</h2>
+    <p class="sub">월 성과 분석에서 가장 자주 나오는 질문은 "객단가가 왜 변했나"입니다. 물류비가 송장 단위로 붙어서, 객단가가 변하면 2차 공헌이익도 함께 움직이기 때문입니다. 이 질문에 바로 답할 수 있도록 객단가 변동을 1P → 브랜드 → 상품 단위까지 자동으로 분해하는 체계를 만들었습니다.</p>
+
+    <div class="kpimap">
+      <div class="km-row"><span class="km-k">정의</span>
+        <div class="km-chain"><span>객단가 (주문당 거래액)</span><i>=</i><span>상품 단가</span><i>×</i><span>주문당 구매수량</span></div></div>
+      <div class="km-row"><span class="km-k">1단계 · 1P</span><p>변동률을 단가 효과와 수량 효과로 배분</p></div>
+      <div class="km-row"><span class="km-k">2단계 · 브랜드</span><p>브랜드 구성 비중 효과와 브랜드 내부 효과로 분리해 브랜드별 기여도 산출</p></div>
+      <div class="km-row"><span class="km-k">3단계 · 상품</span><p>같은 상품의 단가 변화와 상품 구성 변화로 분리, 신규·중단 상품은 별도 구분</p></div>
+    </div>
+
+    <div class="body flat">
+      <div class="why">
+        <h4>고민의 배경</h4>
+        <p>물류부서에서는 "객단가를 올려 달라"는 요청이 꾸준히 왔지만, 객단가는 명절 선물세트나 생활 카테고리 브랜드의 비중만으로도 움직이는 지표라 무엇을 움직여야 오르는지부터 찾아야 했습니다.</p>
+        <p class="p2">먼저 행사 때 단가는 10% 안팎으로 움직여도 주문당 구매수량은 거의 변하지 않는다는 점을 확인했고, 이 진단이 ④ 기획전의 출발점이 됐습니다.</p>
+        <p class="p2">다만 기존 월간 보고는 가격대별 비중만 나열해서, 원인과 해당 브랜드를 매번 수작업으로 찾아야 했습니다.</p>
+        <h4>접근 방식</h4>
+        <p>객단가를 상품 단가와 주문당 구매수량의 곱으로 정의해 가격·수량 요인을 나누고, 같은 방식으로 브랜드와 상품까지 내려가 "누가 움직였나"를 찾도록 설계했습니다.</p>
+      </div>
+      <div class="what">
+        <h4>실행</h4>
+        <ul>
+          <li>로그 분해로 변동률을 단가·수량 기여분으로 배분(합계 100%), 단계별 합계 검증</li>
+          <li>상승 원인을 단가형 · 수량형 · 브랜드 비중형으로 자동 분류하고 유형별 기여 상위 브랜드 추천</li>
+          <li>상품별 변동 요인(구매수량 증가, 판매단가 상승, 비중 변화, 신규 판매)을 기준값으로 자동 판정하고 근거 수치가 붙은 코멘트 생성</li>
+          <li>1P 전 브랜드·SKU 약 2만 개(원천 약 35만 행) 대상, 브랜드를 고르면 요약·분해·기여 상위 30개 상품 자동 갱신</li>
+          <li>매크로 없이 수식으로만 구성해 기준월만 바꾸면 매월 갱신</li>
+        </ul>
+        <h4>결과</h4>
+        <ul class="res">
+          <li>월간 보고 작성 <b>3시간 이상 → 30분 내외</b></li>
+          <li>원인 설명이 "선물세트가 많이 팔려서" 수준에서 <b>어느 브랜드가 어떤 요인으로 얼마나</b> 기여했는지로 전환</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="report case" aria-label="2026년 8월에서 9월 분석 사례">
+      <div class="rp-head"><b>분석 사례 · 2026년 8월 → 9월</b><span class="rp-tag">브랜드명 익명</span></div>
+      <div class="case-top">
+        <div class="ct-num"><span>1P 객단가</span><strong>+19.3%</strong></div>
+        <div class="ct-bars">
+          <p class="ct-l">상승분의 원인</p>
+          <div class="stack"><i style="flex:82">단가 요인 82%</i><i class="s2" style="flex:18">수량 18%</i></div>
+          <p class="ct-l">상승분의 집중도</p>
+          <div class="stack"><i style="flex:69">상위 5개 브랜드 69%</i><i class="s3" style="flex:31">나머지 31%</i></div>
+          <p class="ct-n">→ 점검 대상을 12개 브랜드로 압축</p>
+        </div>
+      </div>
+      <p class="ty-note">아래 세 사례는 1P 상승에 기여한 크기가 아니라, 원인 구조가 서로 다르다는 점을 보여 주기 위해 고른 유형별 대표 사례입니다.</p>
+      <div class="types">
+        <div class="ty"><span class="lb good">단가형</span><span class="ctb hi">1P 상승 기여 큼 · 상위 5개 브랜드</span><b>식품 브랜드 A</b><p>객단가 +50.7%, 그중 70%가 상품 구성 효과. 가격 인상이 아니라 추석 선물세트 비중 확대로 판단하고, 시즌 종료 후 정상화 여부를 모니터링 과제로 지정</p></div>
+        <div class="ty"><span class="lb good">수량형</span><span class="ctb">1P 상승 기여 작음</span><b>제과 브랜드 B</b><p>단가 변화는 +0.4%로 거의 없고, 주문당 구매수량이 1.19개 → 1.28개로 늘어 객단가 상승</p></div>
+        <div class="ty"><span class="lb good">비중형</span><span class="ctb">1P 상승 기여 작음 · 상승분의 약 6%</span><b>건강식품 브랜드 C</b><p>객단가가 높은 브랜드의 주문 비중이 1.15% → 2.00%로 커지며 1P 객단가를 끌어올림. 기여분의 84%가 비중 효과</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="p4" class="project">
+    <p class="kicker">④ 개선</p>
+    <h2>장바구니 확대 기획전 '더담기 혜택전'</h2>
+    <p class="sub">장바구니 쿠폰을 도입하기 전에 효과와 손익분기를 먼저 확인하기 위해, 조건을 제한한 파일럿 기획전을 기획부터 할인 구조, 배너, 성과 분석까지 직접 설계하고 운영했습니다.</p>
+
+    <div class="kpimap">
+      <div class="km-row"><span class="km-k">기간</span><p>2026.06.22 ~ 07.21 (30일)</p></div>
+      <div class="km-row"><span class="km-k">대상</span><p>생필품·제과 6개 브랜드, 131개 SKU · 1P 전체 거래액의 약 1/400 규모</p></div>
+      <div class="km-row"><span class="km-k">할인 구조</span>
+        <div class="km-chain"><span>3만 원 이상 3,000원</span><span>4만 원 이상 5,000원</span><span>5만 원 이상 7,000원</span></div></div>
+    </div>
+
+    <div class="body flat">
+      <div class="why">
+        <h4>고민의 배경</h4>
+        <p>생필품·제과는 단독 출고 주문이 대부분이라(주문당 상품 수 약 1.0개) 물류비 TR이 16.5%로 1P 평균(11~12%)보다 높았습니다. 합포장을 늘리면 물류비가 준다는 가설은 분명했지만, 할인 비용보다 절감이 클지는 확인이 필요했습니다.</p>
+        <h4>접근 방식</h4>
+        <p>목적을 매출이 아니라 "할인 1원이 물류비를 얼마나 줄이는가"의 검증으로 정의했습니다. 변수를 줄이도록 대상을 고르고, 규모를 전체 거래액의 1/400로 제한해 리스크를 통제했습니다.</p>
+      </div>
+      <div class="what">
+        <h4>실행</h4>
+        <ul>
+          <li>대상 선정 기준 수립: 단독 출고 비중, 동시 구매 가능성, 분리포장 위험</li>
+          <li>결제금액 구간별 할인 구조와 기획전 배너까지 직접 설계·운영</li>
+          <li>결제 할인 원천 데이터를 결제·송장 단위로 재구성, 결제당 상품 수·송장당 상품 수·결제당 송장 수 지표 정의</li>
+          <li>물류비를 작업비·택배비·부자재비로 나눠 전량 단독 출고 가정과 실제 합포장 출고 비교</li>
+          <li>브랜드별 2차 공헌이익, 합포장 유형, 할인 구간별 반응, 분리포장 상품 분석</li>
+        </ul>
+        <h4>결과</h4>
+        <ul class="res">
+          <li>참여 상품 기준 2차 공헌이익률 <b>+3.4%p</b></li>
+          <li>장바구니 쿠폰 도입 준비 단계에서, 파일럿으로 정리한 확대 기준이 정책 설계의 기준으로 활용</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="report" aria-label="파일럿 검증 결과">
+      <div class="rp-head"><b>검증 결과 · 참여 상품 기준</b><span class="rp-tag">30일 운영</span></div>
+      <div class="ba">
+        <div class="ba-it"><span>주문당 상품 수</span><p><s>1.0개</s><i>→</i><strong>3.17개</strong></p></div>
+        <div class="ba-it"><span>송장 수</span><p><strong>−54.7%</strong></p></div>
+        <div class="ba-it"><span>물류비 TR</span><p><s>16.5%</s><i>→</i><strong>8.2%</strong></p></div>
+      </div>
+      <div class="be">
+        <p class="ct-l">손익분기 · 할인 투입 대비 물류비 절감</p>
+        <div class="be-bar"><span>할인 투입</span><div><i style="width:78.1%"></i></div><b>1.00</b></div>
+        <div class="be-bar hi"><span>물류비 절감</span><div><i style="width:100%"></i></div><b>1.28</b></div>
+        <p class="be-n">합포장으로 송장당 물류비는 다소 올랐지만, 송장 수 감소 효과가 이를 크게 웃돌았습니다.</p>
+      </div>
+      <div class="types">
+        <div class="ty"><span class="lb good">확대 기준</span><b>어떤 상품에, 얼마까지</b><p>주문당 상품 1.0~1.2개 · 분리포장 낮음 · 물류비 TR 11~12% 초과 상품 대상. 할인 상한은 결제당 물류비 절감액(손익분기). 대조군과 비교 검증 후 확대</p></div>
+        <div class="ty"><span class="lb warn">구간 설계</span><b>최저 구간 쏠림 48%</b><p>3만 원 구간에 사용이 몰려 상위 구간 유도력이 약함을 확인 → 최소금액 상향과 구간 간격 재설계 제안</p></div>
+        <div class="ty"><span class="lb warn">운영 과제</span><b>분리포장과 시스템</b><p>분리포장 원인 상품을 리스트화해 센터 포장 단위 로직 점검 요청(해당 제과 브랜드 물류비 TR은 1P 평균의 1.8배). 최소금액 진행률 표시, 부분취소 시 할인 회수 기준 제안</p></div>
+      </div>
+    </div>
+  </section>
+
+<script>
+(function(){
+  var map={0:'r1',1:'r2',2:'r3',3:'r4'};
+  document.querySelectorAll('.track .step').forEach(function(el,i){
+    el.setAttribute('role','link');el.tabIndex=0;el.classList.add('jump');
+    function go(){var d=document.getElementById(map[i]);if(!d)return;d.open=true;d.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});}
+    el.addEventListener('click',go);el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+  });
+})();
+</script>
+
+</body>
+</html>
